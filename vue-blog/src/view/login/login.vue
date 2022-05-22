@@ -101,6 +101,7 @@ export default {
 
 <style scoped>
 .container {
+  margin: 0;
   height: 100vh;
   background-color: #2c3e50;
   display: flex;
@@ -109,14 +110,16 @@ export default {
 
 }
 
-.login-wrap {
-}
+.menu-tab{
 
-.login-wrap li {
+  
+}
+li {
   display: inline-block;
   width: 88px;
   line-height: 36px;
   margin: auto;
 }
+ 
 
 </style>
