@@ -5,28 +5,41 @@
         <li>登录</li>
         <li>注册</li>
       </ul>
-        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-          <el-form-item label="密码" prop="pass">
-            <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="确认密码" prop="checkPass">
-            <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="年龄" prop="age">
-            <el-input v-model.number="ruleForm.age"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
+      <el-form :model="ruleForm"
+               status-icon
+               :rules="rules"
+               ref="ruleForm"
+               label-width="100px"
+               class="demo-ruleForm">
+        <el-form-item label="密码"
+                      prop="pass">
+          <el-input type="password"
+                    v-model="ruleForm.pass"
+                    autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码"
+                      prop="checkPass">
+          <el-input type="password"
+                    v-model="ruleForm.checkPass"
+                    autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="年龄"
+                      prop="age">
+          <el-input v-model.number="ruleForm.age"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary"
+                     @click="submitForm('ruleForm')">提交</el-button>
+          <el-button @click="resetForm('ruleForm')">重置</el-button>
+        </el-form-item>
+      </el-form>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     var checkAge = (rule, value, callback) => {
       if (!value) {
         return callback(new Error('年龄不能为空'));
@@ -70,19 +83,19 @@ export default {
       },
       rules: {
         pass: [
-          {validator: validatePass, trigger: 'blur'}
+          { validator: validatePass, trigger: 'blur' }
         ],
         checkPass: [
-          {validator: validatePass2, trigger: 'blur'}
+          { validator: validatePass2, trigger: 'blur' }
         ],
         age: [
-          {validator: checkAge, trigger: 'blur'}
+          { validator: checkAge, trigger: 'blur' }
         ]
       }
     };
   },
   methods: {
-    submitForm(formName) {
+    submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           alert('submit!');
@@ -92,7 +105,7 @@ export default {
         }
       });
     },
-    resetForm(formName) {
+    resetForm (formName) {
       this.$refs[formName].resetFields();
     }
   }
@@ -107,19 +120,12 @@ export default {
   display: flex;
   align-items: center;
   justify-items: center;
-
 }
 
-.menu-tab{
-
-  
-}
-li {
+.menu-tab li {
   display: inline-block;
   width: 88px;
   line-height: 36px;
   margin: auto;
 }
- 
-
 </style>
