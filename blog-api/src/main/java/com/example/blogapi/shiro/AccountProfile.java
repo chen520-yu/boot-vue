@@ -10,3 +10,4 @@ public class AccountProfile implements Serializable {
     private String username;
     private String avatar;
 }
+
