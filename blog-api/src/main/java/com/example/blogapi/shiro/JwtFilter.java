@@ -57,7 +57,9 @@ public class JwtFilter extends AuthenticatingFilter {
 
     @Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
+
         HttpServletRequest httpServletRequest= WebUtils.toHttp(request);
+
         HttpServletResponse httpServletResponse=WebUtils.toHttp(response);
 
         httpServletResponse.setHeader("Access-control-Allow-Origin", httpServletRequest.getHeader("Origin"));

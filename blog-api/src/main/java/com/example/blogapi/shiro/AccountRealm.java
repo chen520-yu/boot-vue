@@ -23,7 +23,6 @@ public class AccountRealm extends AuthorizingRealm {
     @Autowired
     UserService userService;
 
-
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
