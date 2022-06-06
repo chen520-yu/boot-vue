@@ -15,13 +15,18 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class AccountRealm extends AuthorizingRealm {
+public class    AccountRealm extends AuthorizingRealm {
 
     @Autowired
     JwtUtils jwtUtils;
 
     @Autowired
     UserService userService;
+
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return token instanceof JwtToken;
+    }
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {

@@ -11,12 +11,11 @@ import com.example.blogapi.service.UserService;
 import com.example.blogapi.utils.JwtUtils;
 import org.apache.catalina.security.SecurityUtil;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.util.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.security.Security;
@@ -57,6 +56,14 @@ public class AccountController {
         );
 
 
+    }
+
+
+    @GetMapping("/logout")
+    @RequiresAuthentication
+    public Result logout(){
+        SecurityUtils.getSubject().logout();
+        return Result.succ(null);
     }
 
 

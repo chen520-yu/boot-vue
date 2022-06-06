@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Login from "../view/Login";
 import Blogs from "../view/Blogs";
 import BlogEdit from "../view/BlogEdit";
@@ -9,13 +10,13 @@ Vue.use(Router)
 
 export default new Router({
 
-
-
+  mode:'history',
+  base:process.env.BABEL_URl,
   routes: [
     {
       path: '/',
       name: 'Index',
-      redirect: {name:"Blogs"}
+      redirect: {name:"login"}
     },
     {
       path: '/login',
