@@ -1,14 +1,10 @@
 package com.example.blogapi.shiro;
 
-import cn.hutool.http.HttpRequest;
 import cn.hutool.http.server.HttpServerRequest;
 import cn.hutool.json.JSONUtil;
-import com.alibaba.druid.util.StringUtils;
 import com.example.blogapi.common.lang.Result;
 import com.example.blogapi.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
-import io.netty.util.internal.StringUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExpiredCredentialsException;
@@ -16,6 +12,7 @@ import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletRequest;
@@ -23,7 +20,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 @Component
 public class JwtFilter extends AuthenticatingFilter {
 
