@@ -25,6 +25,9 @@ import javax.servlet.http.HttpServletResponse;
  * 但此处并未实现isAccessAllowed方法，直接写了onAccessDenied方法
  */
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
 @Component
 public class JwtFilter extends AuthenticatingFilter {
 
@@ -89,5 +92,6 @@ public class JwtFilter extends AuthenticatingFilter {
 
 
         return super.preHandle(request, response);
+
     }
 }
