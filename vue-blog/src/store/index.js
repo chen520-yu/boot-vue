@@ -22,16 +22,14 @@ export default new Vuex.Store({
       sessionStorage.setItem("userinfo",JSON.stringify(''))
       state.userInfo={}
     },
-    getters: {
-      getUser: state => {
-        return state.userInfo
-      }
-    },
-    actions :{},
-    modules:{}
-  }
-
-
+  },
+  getters: {
+    getUser: state => {
+      return state.userInfo
+    }
+  },
+  actions :{},
+  modules:{}
 
 
 })

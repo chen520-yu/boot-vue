@@ -1,5 +1,9 @@
 <template>
 
+  <div>
+    blogedit
+  </div>
+
 </template>
 
 <script>
