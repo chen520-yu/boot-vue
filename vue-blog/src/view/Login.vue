@@ -58,10 +58,14 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 提交逻辑
-          this.$axios.post('http://localhost:8081/login', this.ruleForm).then((res)=>{
+          this.$axios.post('/login', this.ruleForm).then((res)=>{
+            console.log(res)
             const token = res.headers['authorization']
             _this.$store.commit('SET_TOKEN', token)
             _this.$store.commit('SET_USERINFO', res.data.data)
+            // 获取
+            console.log(_this.$store.getters.getUser)
+
             _this.$router.push("/blogs")
           })
         } else {
@@ -77,7 +81,7 @@ export default {
   mounted() {
     this.$notify({
       title: '看这里：',
-      message: '关注公众号：MarkerHub，回复【vueblog】，领取项目资料与源码',
+      message: '我此生终将逆流而上，或许有的事物能暂时蒙蔽我的双眼，但我终将醒悟',
       duration: 1500
     });
   }

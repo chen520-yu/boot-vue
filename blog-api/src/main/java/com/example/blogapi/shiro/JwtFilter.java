@@ -1,6 +1,5 @@
 package com.example.blogapi.shiro;
 
-import cn.hutool.http.server.HttpServerRequest;
 import cn.hutool.json.JSONUtil;
 import com.example.blogapi.common.lang.Result;
 import com.example.blogapi.utils.JwtUtils;
@@ -28,7 +27,7 @@ public class JwtFilter extends AuthenticatingFilter {
 
     @Override
     protected AuthenticationToken createToken(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
-        HttpServerRequest request = (HttpServerRequest) servletRequest;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         String jwt = request.getHeader("Authorization");
         if (StringUtils.isEmpty(jwt)) {
             return null;
@@ -38,7 +37,7 @@ public class JwtFilter extends AuthenticatingFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
-        HttpServerRequest request = (HttpServerRequest) servletRequest;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         String token = request.getHeader("Authorization");
         if (StringUtils.isEmpty(token)) {
             return true;
