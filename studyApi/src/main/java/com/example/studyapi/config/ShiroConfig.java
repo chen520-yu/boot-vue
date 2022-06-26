@@ -20,7 +20,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
-
 public class ShiroConfig {
 
     @Autowired
@@ -51,9 +50,9 @@ public class ShiroConfig {
      */
 
     @Bean
-    public DefaultWebSecurityManager defaultWebSecurityManager(CustomerRealm customerRealm,
-                                                               SessionManager sessionManager,
-                                                               RedisCacheManager redisCacheManager) {
+    public DefaultWebSecurityManager securityManager(CustomerRealm customerRealm,
+                                                     SessionManager sessionManager,
+                                                     RedisCacheManager redisCacheManager) {
         DefaultWebSecurityManager webSecurityManager = new DefaultWebSecurityManager();
 
 
@@ -67,7 +66,7 @@ public class ShiroConfig {
     }
 
     /**
-     * 设置权限校验,此处设置的校验方式是jwt，自定义
+     * 设置权限校验,此处设置的校验方式是jwt，自定
      *
      * @return
      */
@@ -85,11 +84,12 @@ public class ShiroConfig {
 
     /**
      * 此处添加了自定义的filter，即前面的定义使用的jwt
+     *
      * @param defaultWebSecurityManager
      * @param shiroFilterChainDefinition
      * @return
      */
-    @Bean
+    @Bean("shiroFilterFactoryBean")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager defaultWebSecurityManager,
                                                          ShiroFilterChainDefinition shiroFilterChainDefinition) {
 
@@ -99,6 +99,8 @@ public class ShiroConfig {
 
 
         Map<String, Filter> filters = new HashMap<>();
+
+
         filters.put("jwt", jwtFilter);
         shiroFilterFactoryBean.setFilters(filters);
 

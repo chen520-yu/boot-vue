@@ -90,7 +90,6 @@ public class JwtFilter extends AuthenticatingFilter {
             httpServletResponse.setStatus(org.springframework.http.HttpStatus.OK.value());
         }
 
-
         return super.preHandle(request, response);
 
     }
